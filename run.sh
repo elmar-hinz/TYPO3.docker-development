@@ -11,5 +11,6 @@ docker run \
     --env XDEBUG_CONFIG='remote_host=192.168.56.1 remote_enable=1 idekey=PHPSTORM' \
     --env TYPO3_CONTEXT=Development \
     --detach \
-    elmarhinz/typo3-development:latest
+    elmarhinz/typo3.docker-development:latest
+
 
