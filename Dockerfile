@@ -6,6 +6,7 @@ MAINTAINER Elmar Hinz <t3elmar@gmail.com>
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
         graphicsmagick \
+        ghostscript \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
@@ -20,6 +21,8 @@ RUN apt-get update; \
 RUN docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/; \
+        --with-png-dir=/usr/include/; \
+        --with-zlib-dir=/usr/include/; \
     docker-php-ext-install -j$(nproc) \
         gd \
         mysqli \
@@ -27,13 +30,18 @@ RUN docker-php-ext-configure gd \
         soap \
         zip \
     ; \
+    pecl install redis; \
+    pecl install xdebug; \
+    docker-php-ext-enable redis xdebug; \
     a2enmod rewrite;
 COPY typo3.ini /usr/local/etc/php/conf.d/
+COPY xdebug.ini /usr/local/etc/php/conf.d/
 
 # Setup directories
 
 WORKDIR /var/www/html
 RUN \
+    chmod 2770 /var/www/html; \
     mkdir typo3_src; \
     ln -s typo3_src/index.php; \
     ln -s typo3_src/typo3; \
