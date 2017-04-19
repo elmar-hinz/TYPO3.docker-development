@@ -5,7 +5,7 @@ TYPO3.docker-development
 A docker container designed to support the developement of the TYPO3 sources.
 
 This is the Dockerfile the container
-https://hub.docker.com/r/elmarhinz/typo3-development/.
+https://hub.docker.com/r/elmarhinz/typo3.docker-development/.
 
 Features
 ========
@@ -25,6 +25,10 @@ difficult setup to connect the IDE into the server to use Xdebug.
 There are many containers available that ship the TYPO3 sources of a dedicated
 version. In contrast this container is designed to mount sources from the local
 machine. It supports the countinous editing and testing of the sources.
+
+
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/debugger.png
+
 
 Requirements
 ============
@@ -83,12 +87,16 @@ Use the IP of your host and the session key of your IDE.
 * XDEBUG_CONFIG: 'remote_host=192.168.56.1 remote_enable=1 idekey=PHPSTORM'
 * TYPO3_CONTEXT: Development
 
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/environment.png
+
 Ports
 .....
 
 Map the port 80 of the container to a port on your local machine.
 
 * 80 => 80
+
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/ports.png
 
 Mounts
 ......
@@ -102,12 +110,16 @@ machine.
 * /var/www/html/typo3conf => local/typo3conf
 * /var/www/html/typo3temp => local/typo3temp
 
-Option2: Startup skript
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/mounts.png
+
+Option2: Startup script
 -----------------------
 
-See https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/run.
+See https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/run.sh.
 
 Adjust the script to your needs.
+
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/script.png
 
 Running
 =======
@@ -143,15 +155,19 @@ Use it to turn debugging on and off. You don't need an extension in the browser
 to turn debugging on and off. Debuggin is triggered by the `idekey` in the
 environment varible.
 
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/connected.png
+
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/disconnected.png
+
 Upon the first connection PHPStorm will ask you to map::
 
     /var/www/html/typo3_src/index.php
 
 in the container to the path of the script on your local machine.
 
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/mapping.png
 
+.. image:: https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/debugger.png
 
 Happy debugging!
-
-
 
