@@ -9,6 +9,14 @@ You find the Container on [hub.docker.com](https://hub.docker.com/r/elmarhinz/ty
 You find the Dockerfile on [github.com](https://github.com/elmar-hinz/TYPO3.docker-development).
 There you will also find the latest version of this documentation.
 
+Versioning
+----------
+
+Tags e.g. **v9.b**:
+
+* v8, v9, v10: Siutable for TYPO3 versions 8, 9, 10.
+* a, b, c, d, e, ... : Versions of the container.
+
 Features
 --------
 
