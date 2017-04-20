@@ -18,7 +18,7 @@ Features
 * Can connect to any Database. No container linking required.
 * Works within *Kitematic*.
 
-![debugger](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/debugger.png)
+![debugger](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/debugger.png)
 
 Motivation
 ----------
@@ -83,7 +83,7 @@ Use the IP of your host and the session key of your IDE.
 * XDEBUG_CONFIG: 'remote_host=192.168.56.1 remote_enable=1 idekey=PHPSTORM'
 * TYPO3_CONTEXT: Development
 
-![environment](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/environment.png)
+![environment](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/environment.png)
 
 #### Ports
 
@@ -91,7 +91,7 @@ Map the port 80 of the container to a port on your local machine.
 
 * 80 => 80
 
-![ports](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/ports.png)
+![ports](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/ports.png)
 
 #### Mounts
 
@@ -104,7 +104,7 @@ machine.
 * /var/www/html/typo3conf => local/typo3conf
 * /var/www/html/typo3temp => local/typo3temp
 
-![mounts](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/mounts.png)
+![mounts](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/mounts.png)
 
 ### Option2: Startup script
 
@@ -112,7 +112,7 @@ See https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/run.sh.
 
 Adjust the script to your needs.
 
-![script](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/script.png)
+![script](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/script.png)
 
 Running
 -------
@@ -141,23 +141,23 @@ Call *ifconfig* to find out the IP of your machine.
 In PHPStorm there is a button looking like an ancient Telephone
 *"Start listening for PHP debug connections"*.
 
-![connected](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/connected.png)
+![connected](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/connected.png)
 
 Use it to turn debugging on and off. You don't need an extension in the browser
 to turn debugging on and off. Debugging is triggered by the __idekey__ in the
 environment varible.
 
-![disconnected](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/disconnected.png)
+![disconnected](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/disconnected.png)
 
-Upon the first connection PHPStorm will ask you to map.
+Upon the first connection PHPStorm will ask you to map
 
     /var/www/html/typo3_src/index.php
 
-in the container to the path of the script on your local machine.
+inside the container to the path of the script on your local machine.
 
-![mapping](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/mapping.png)
+![mapping](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/mapping.png)
 
 Happy debugging!
 
-![debugger](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/debugger.png)
+![debugger](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/debugger.png)
 
