@@ -59,7 +59,7 @@ Preparations
 
 Have your docker environment running.
 
-### Option1: Fresh installation
+### Option 1: Fresh installation
 
 1. Install the TYPO3 sources into a directory on the local machine.
 2. Create an empty local directory *typo3conf*.
@@ -68,7 +68,7 @@ Have your docker environment running.
 5. Create an empty local directory *fileadmin*.
 6. Prepare an empty database to install into.
 
-### Option2: Existing installation
+### Option 2: Existing installation
 
 1. Install the TYPO3 sources into a directory on the local machine.
 2. Use your existing directories typo3conf, typo3temp, uploads, fileadmin.
@@ -82,7 +82,7 @@ interactively. One the commandline you will configure the conatiner with the
 startup call. Best put the call into a shell script, to be able to run
 it repeatedly.
 
-### Option1: Interactive configuration with GUI like Kitematic
+### Option 1: Interactive configuration with GUI like Kitematic
 
 #### Environment variables
 
@@ -114,7 +114,7 @@ machine.
 
 ![mounts](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/mounts.png)
 
-### Option2: Startup script
+### Option 2: Startup script
 
 See https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/run.sh.
 
@@ -125,17 +125,21 @@ Adjust the script to your needs.
 Running
 -------
 
-### Option1: Fresh installation
+You need the real IP of your database server. If your DB is on your local
+machine neither _localhost_ nor _127.0.0.1_ will work. From within the
+container they point to the container. See Appendix for how to set up a
+permanent IP for your local machine.
 
-Log into the container and create the file **FIRST_INSTALLATION**.
+If your DB is within another container, use the IP assigned to that container.
 
-    touch /var/www/html/FIRST_INSTALLATION
+### Option 1: Fresh installation
 
 Execute the usual TYPO3 setup in your web browser.
 
-### Option2: Fresh installation
+### Option 2: Existing installation
 
-If the setup of the DB in *typo3conf/* was not changed, you should be done.
+If needed adjust the IP of the DB in *typo3conf/LocalConfiguration.php*.
+You are ready to run.
 
 Xdebug with PHPStorm
 --------------------
@@ -189,8 +193,8 @@ See: [RFC 1918](https://tools.ietf.org/html/rfc1918)
 An option is to permanently bind an alias to the local loopback device.
 The local loopback device is always up, even if the machine is disconnected.
 
-[This plist file](https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/alias.lo0.10.10.10.10.plist)
-does the job for the IP 10.10.10.10.
+[This plist file](https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/alias.lo0.10.10.10.10.plist) does
+the job for the IP 10.10.10.10.
 
 Install it into _/Library/LaunchDaemons/_ as _root:wheel_ with rights set to
 _644_.
