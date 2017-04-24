@@ -8,9 +8,9 @@ docker run \
     --volume /Volumes/Work/OpenSource/TYPO3.CMS.installation/typo3conf:/var/www/html/typo3conf \
     --volume /Volumes/Work/OpenSource/TYPO3.CMS.installation/typo3temp:/var/www/html/typo3temp \
     --publish 80:80 \
-    --env XDEBUG_CONFIG='remote_host=192.168.56.1 remote_enable=1 idekey=PHPSTORM' \
+    --env XDEBUG_CONFIG='remote_host=10.10.10.10 remote_enable=1 idekey=PHPSTORM' \
     --env TYPO3_CONTEXT=Development \
     --detach \
-    elmarhinz/typo3.docker-development:latest
+    elmarhinz/typo3.docker-development:v8.b
 
 

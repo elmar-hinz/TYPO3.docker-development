@@ -88,7 +88,7 @@ it repeatedly.
 
 Use the IP of your host and the session key of your IDE.
 
-* XDEBUG_CONFIG: 'remote_host=192.168.56.1 remote_enable=1 idekey=PHPSTORM'
+* XDEBUG_CONFIG: 'remote_host=10.10.10.10 remote_enable=1 idekey=PHPSTORM'
 * TYPO3_CONTEXT: Development
 
 ![environment](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/environment.png)
@@ -142,9 +142,10 @@ Xdebug with PHPStorm
 
 The setting of the environment variable is alpha and omega.
 
-* XDEBUG_CONFIG: 'remote_host=192.168.56.1 remote_enable=1 idekey=PHPSTORM'
+* XDEBUG_CONFIG: 'remote_host=10.10.10.10 remote_enable=1 idekey=PHPSTORM'
 
-Call *ifconfig* to find out the IP of your machine.
+Call *ifconfig* to find out the IP of your machine. See the Appendix for how
+to set up a permanent IP for your local machine.
 
 In PHPStorm there is a button looking like an ancient Telephone
 *"Start listening for PHP debug connections"*.
@@ -168,4 +169,30 @@ inside the container to the path of the script on your local machine.
 Happy debugging!
 
 ![debugger](https://raw.githubusercontent.com/elmar-hinz/TYPO3.docker-development/master/img/debugger.png)
+
+Appendix
+--------
+
+### Permanent IP for the local machine within dynamic networks
+
+In dynamic networks the IP of the local machine is changing. Yet you need a
+permanent IP to point Xdebug to. Maybe your DB also stays on the local machine.
+
+Private address spaces:
+
+    10.0.0.0        -   10.255.255.255  (10/8 prefix)
+    172.16.0.0      -   172.31.255.255  (172.16/12 prefix)
+    192.168.0.0     -   192.168.255.255 (192.168/16 prefix)
+
+See: [RFC 1918](https://tools.ietf.org/html/rfc1918)
+
+An option is to permanently bind an alias to the local loopback device.
+The local loopback device is always up, even if the machine is disconnected.
+
+[This plist file](https://github.com/elmar-hinz/TYPO3.docker-development/blob/master/alias.lo0.10.10.10.10.plist)
+does the job for the IP 10.10.10.10.
+
+Install it into _/Library/LaunchDaemons/_ as _root:wheel_ with rights set to
+_644_.
+
 
