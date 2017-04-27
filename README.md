@@ -1,13 +1,19 @@
 TYPO3.docker-development
 ========================
 
-A docker container designed to support the developement of the TYPO3 sources.
+A docker container designed to support the developement of the TYPO3 sources,
+core as well as extensions.
 
 This is the Dockerfile of the container **elmarhinz/typo3.docker-development**.
 
-You find the Container on [hub.docker.com](https://hub.docker.com/r/elmarhinz/typo3.docker-development/).
-You find the Dockerfile on [github.com](https://github.com/elmar-hinz/TYPO3.docker-development).
+You find the Container on
+[hub.docker.com](https://hub.docker.com/r/elmarhinz/typo3.docker-development/).
+You find the Dockerfile on
+[github.com](https://github.com/elmar-hinz/TYPO3.docker-development).
 There you will also find the latest version of this documentation.
+
+Hint: The search terms **docker typo3 development** work on Google, Github
+and Docker hub to quickly find the container.
 
 Versioning
 ----------
@@ -20,6 +26,8 @@ Tags e.g. **v9.b**:
 Features
 --------
 
+* Supports development of the core.
+* Supports development of extensions.
 * Sources are to be mounted from the local machine into the container.
 * Directories *typo3conf*, *uploads*, *fileadmin* and *typo3temp* are to be mounted.
 * Remote debugging with *Xdebug* is built in and tested to be run with *PHPStorm*.
@@ -44,20 +52,29 @@ Requirements
 The container has been developed with the following setup:
 
 * Mac OS X
-* Native Mac Docker
+* Docker-For-Mac Community Edition
 * Kitematic
-* An already prepared  Maria DB
+* Maria DB on localhost
 * TYPO3 sources cloned from the master branch
 
-It should be usable in other setups, as it is a single container and the
-database connection is done the classical way by host and port.
-
-The mounting of volumes by NFS hasn't been tested yet.
+It should be usable in many setups. It is a single independent container and
+the database connection is simply done by IP.
 
 Preparations
 ------------
 
 Have your docker environment running.
+
+### IPs
+
+Neither _localhost_ nor _127.0.0.1_ will work. From within the container they
+just point to the container. You need the IP of your database server and the
+IP of your IDE to connect Xdebug to it. If your DB is within another container,
+use the IP assigned to that container.
+
+In the given examples and configuration files both use the IP _10.10.10.10_.
+See [Appendix](#appendix) for how to bind a permanent IP to your local
+loopback device.
 
 ### Option 1: Fresh installation
 
@@ -125,13 +142,6 @@ Adjust the script to your needs.
 Running
 -------
 
-You need the real IP of your database server. If your DB is on your local
-machine neither _localhost_ nor _127.0.0.1_ will work. From within the
-container they point to the container. See Appendix for how to set up a
-permanent IP for your local machine.
-
-If your DB is within another container, use the IP assigned to that container.
-
 ### Option 1: Fresh installation
 
 Execute the usual TYPO3 setup in your web browser.
@@ -179,8 +189,9 @@ Appendix
 
 ### Permanent IP for the local machine within dynamic networks
 
-In dynamic networks the IP of the local machine is changing. Yet you need a
-permanent IP to point Xdebug to. Maybe your DB also stays on the local machine.
+In dynamic networks the IP of the local machine is often changing. To get a
+stable configuration you need a permanent IP to point Xdebug to your IDE.
+If your IDE is on the local machine the same accounts for it.
 
 Private address spaces:
 
