@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:7.2-apache
 MAINTAINER Elmar Hinz <t3elmar@gmail.com>
 
 # Load packages
@@ -10,7 +10,7 @@ RUN apt-get update; \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         libxml2-dev \
         wget \
         zlib1g-dev \
@@ -18,12 +18,14 @@ RUN apt-get update; \
 
 # Configure PHP and Apache
 
+RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/; \
         --with-png-dir=/usr/include/; \
         --with-zlib-dir=/usr/include/; \
     docker-php-ext-install -j$(nproc) \
+        intl \
         gd \
         mysqli \
         opcache \
@@ -67,7 +69,7 @@ RUN apt-get -y purge \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         libxml2-dev \
         zlib1g-dev \
     ; \
