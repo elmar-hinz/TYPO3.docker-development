@@ -144,11 +144,13 @@ Running
 
 ### Option 1: Fresh installation
 
-Execute the usual TYPO3 setup in your web browser.
+Execute the usual TYPO3 setup in your web browser. If you installed the
+Sources from Github, first run `composer install` on your machine. Then
+call `http://localhost:80/install/index.php`.
 
 ### Option 2: Existing installation
 
-If needed adjust the IP of the DB in *typo3conf/LocalConfiguration.php*.
+If needed, adjust the IP of the DB in *typo3conf/LocalConfiguration.php*.
 You are ready to run.
 
 Xdebug with PHPStorm
