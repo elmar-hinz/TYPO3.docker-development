@@ -146,7 +146,10 @@ Running
 
 Execute the usual TYPO3 setup in your web browser. If you installed the
 Sources from Github, first run `composer install` on your machine. Then
-call `http://localhost:80/install/index.php`.
+call `http://localhost:80/typo3/install.php`.
+
+Edit ` typo3conf/LocalConfiguration.php`. Set `GFX/processor_effects` to true
+to get a soft language shadow.
 
 ### Option 2: Existing installation
 
